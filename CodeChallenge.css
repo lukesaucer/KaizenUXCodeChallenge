@@ -74,6 +74,14 @@
     align-items: flex-start;
 }
 
+.container-cc .box-cc .image-container-cc img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+}
+
 .btn-primary-cc {
   margin-top: 1em;
   border: 1px solid transparent;

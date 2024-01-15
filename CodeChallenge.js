@@ -280,7 +280,7 @@ var newSectionHTML = '' +
             '<div class="button-container-cc">' +
                 '<button type="button" class="btn-primary-cc">Kaizen UX</button>' +
                 '<button type="button" class="btn-secondary-cc">Hints</button>' +
-                '<button type="button" class="btn-secondary-cc">Next Matchup</button>' +
+                '<button type="button" class="btn-tertiary-cc">Next Matchup</button>' +
             '</div>' +
         '</div>' +
         '<div class="middle-cc">' + 
@@ -325,17 +325,225 @@ var header = document.querySelector('.container-cc .box-cc .middle-cc h1');
 var text = document.querySelector('.container-cc .box-cc .middle-cc p');
 var image = document.querySelector('.container-cc .box-cc .right-cc img');
 var btnPrimary = document.querySelector('.btn-primary-cc');
+var matches = [
+    {
+      team: 'Presbyterian',
+      time: '7:00 PM',
+      date: 'Nov 7',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/06/1200px-Presbyterian_College_logo.jpg'
+    },
+    {
+      team: 'USC Upstate',
+      time: '6:00 PM',
+      date: 'Nov 10',
+      image: 'https://vucommodores.com/wp-content/uploads/2022/08/upstate-u-349.jpg'
+    },
+    {
+      team: 'UNC Greensboro',
+      time: '7:00 PM',
+      date: 'Nov 14',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/08/UNCG_Spartans_logo.svg_.png'
+    },
+    {
+      team: 'Central Arkansas',
+      time: '6:00 PM',
+      date: 'Nov 17',
+      image: 'https://vucommodores.com/wp-content/uploads/2019/10/UCA-Bear-head-.png'
+    },
+    {
+      team: 'NC State',
+      time: '9:00 PM',
+      date: 'Nov 23',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/08/NC_State_Wolfpack_logo.svg_.png'
+    },
+    {
+      team: 'Arizona State',
+      time: '7:00 PM',
+      date: 'Nov 24',
+      image: 'https://vucommodores.com/wp-content/uploads/2007/02/Arizona-State.png'
+    },
+    {
+      team: 'Boston College',
+      time: '8:15 PM',
+      date: 'Nov 29',
+      image: 'https://vucommodores.com/wp-content/uploads/2007/02/Boston-College.png'
+    },
+    {
+      team: 'Alabama A&M',
+      time: '4:00 PM',
+      date: 'Dec 2',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/10/1200px-Alabama_AM_Bulldogs_logo.svg_.png'
+    },
+    {
+      team: 'San Francisco',
+      time: '7:00 PM',
+      date: 'Dec 6',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/08/San_Francisco_Dons_logo.svg_.png'
+    },
+    {
+      team: 'Texas Tech',
+      time: '6:30 PM',
+      date: 'Dec 16',
+      image: 'https://vucommodores.com/wp-content/uploads/2007/09/texas-tech.png'
+    },
+    {
+      team: 'Western Carolina',
+      time: '6:00 PM',
+      date: 'Dec 19',
+      image: 'https://vucommodores.com/wp-content/uploads/2008/03/Western-Carolina.png'
+    },
+    {
+      team: 'Memphis',
+      time: '3:00 PM',
+      date: 'Dec 23',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Memphis.png'
+    },
+    {
+      team: 'Dartmouth',
+      time: '4:00 PM',
+      date: 'Dec 30',
+      image: 'https://vucommodores.com/wp-content/uploads/2015/09/Dartmouth.png'
+    },
+    {
+      team: 'Alabama',
+      time: '2:30 PM',
+      date: 'Jan 6',
+      image: 'https://vucommodores.com/wp-content/uploads/2022/09/Alabama_Athletics_logo.svg_.png'
+    },
+    {
+      team: 'LSU',
+      time: '8:00 PM',
+      date: 'Jan 9',
+      image: 'https://vucommodores.com/wp-content/uploads/2019/08/LSU.png'
+    },
+    {
+      team: 'Ole Miss',
+      time: '12:00 PM',
+      date: 'Jan 13',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Ole-Miss.png'
+    },
+    {
+      team: 'Auburn',
+      time: '8:00 PM',
+      date: 'Jan 17',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/09/Auburn_Tigers_logo.png'
+    },
+    {
+      team: 'Mississippi State',
+      time: '2:30 PM',
+      date: 'Jan 20',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/06/1280px-Mississippi_State_Bulldogs_logo.svg_.png'
+    },
+    {
+      team: 'Tennessee',
+      time: '5:00 PM',
+      date: 'Jan 27',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Tennessee.png'
+    },
+    {
+      team: 'Auburn',
+      time: '8:00 PM',
+      date: 'Jan 31',
+      image: 'https://vucommodores.com/wp-content/uploads/2023/09/Auburn_Tigers_logo.png'
+    },
+    {
+      team: 'Missouri',
+      time: '2:30 PM',
+      date: 'Feb 3',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Missouri.png'
+    },
+    {
+      team: 'Kentucky',
+      time: '7:30 PM',
+      date: 'Feb 6',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Kentucky.png'
+    },
+    {
+      team: 'South Carolina',
+      time: '12:00 PM',
+      date: 'Feb 10',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/South-Carolina.png'
+    },
+    {
+      team: 'Texas A&M',
+      time: '6:00 PM',
+      date: 'Feb 13',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Texas-AM.png'
+    },
+    {
+      team: 'Tennessee',
+      time: '5:00 PM',
+      date: 'Feb 17',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Tennessee.png'
+    },
+    {
+      team: 'Georgia',
+      time: '7:30 PM',
+      date: 'Feb 21',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/09/Georgia-400x280-1.png'
+    },
+    {
+      team: 'Florida',
+      time: '12:00 PM',
+      date: 'Feb 24',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Florida.png'
+    },
+    {
+      team: 'Arkansas',
+      time: '8:00 PM',
+      date: 'Feb 27',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Arkansas.png'
+    },
+    {
+      team: 'LSU',
+      time: '2:30 PM',
+      date: 'Mar 2',
+      image: 'https://vucommodores.com/wp-content/uploads/2019/08/LSU.png'
+    },
+    {
+      team: 'Kentucky',
+      time: '8:00 PM',
+      date: 'Mar 6',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Kentucky.png'
+    },
+    {
+      team: 'Florida',
+      time: '3:30 PM',
+      date: 'Mar 9',
+      image: 'https://vucommodores.com/wp-content/uploads/2021/07/Florida.png'
+    },
+  ];
+
+var matchIndex = Math.floor(Math.random() * matches.length);
+var match = matches[matchIndex];
 
 // Define the headers, text, and image URLs for each button
 var headers = ['Kaizen UX', 'Hints', 'Vanderbilt Basketball\'s Next Matchup'];
 var texts = [
     'Kaizen UX is an A/B Testing and Optimization Agency. We execute large A/B testing, website optimization, and other digital marketing projects for high-traffic clients.', 
-    'In this coding challenge, you may not submit an HTML file, so you\'ll want to set up your HTML in a string and use a function of Element called insertAdjacentHTML(). <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">Learn more here.</a>'
+    'In this coding challenge, you may not submit an HTML file, so you\'ll want to set up your HTML in a string and use a function of Element called insertAdjacentHTML(). <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">Learn more here.</a>',
+    'Vanderbilt Basketball\'s next matchup is against ' + match.team + ' at ' + match.time + ' on ' + match.date + '.'
 ];
 var images = ['https://vucommodores.com/wp-content/uploads/2024/01/Screenshot-2024-01-11-at-3.03.33-PM-1024x530.png', 'https://vucommodores.com/wp-content/uploads/2024/01/DSC05578-1-1024x683.jpg'];
 
+// //Create img element for the team's image.
+// var img = document.createElement('img');
+// img.src = match.image;
+
+// //Select the image-container-cc element
+// var imageContainer = document.querySelector('.image-container-cc');
+
+// Remove any existing images in the container
+// while(imageContainer.firstChild) {
+//     imageContainer.removeChild(imageContainer.firstChild);
+// }
+
+// //Append the image to the image-container-cc element
+// imageContainer.appendChild(img);
+
+
 // Loop through the buttons
-buttons.forEach((button, index) => {
+buttons.forEach(function(button, index) {
 
 // Add event listeners for mouseenter and mouseleave events
 btnPrimary.addEventListener('mouseenter', function() {
@@ -348,27 +556,37 @@ btnPrimary.addEventListener('mouseleave', function() {
         this.classList.add('inactive');
     }
 });
+
 // Add event listeners for click events
     button.addEventListener('click', function() {
         // Change the header and text in the middle-cc section
-        buttons.forEach((button) => {
+        buttons.forEach(function(button) {
             button.classList.remove('clicked');
         });
 
         // Add the active class to the clicked button
         button.classList.add('clicked');
+
             // Add the inactive class to the primary button if the secondary button is clicked
         if (button.classList.contains('btn-secondary-cc')) {
             document.querySelector('.btn-primary-cc').classList.add('inactive');
         } else {
             document.querySelector('.btn-primary-cc').classList.remove('inactive');
-        }
-
+        } 
 
         header.textContent = headers[index];
         text.innerHTML = texts[index]; // Change textContent to innerHTML
 
         // Change the image in the right-cc column
         image.src = images[index];
+
+
+     // Create an img element
+     var img = document.createElement('img');
+
+     // Select the image-container-cc element
+     var imageContainer = document.querySelector('.image-container-cc');
+ 
+     
     });
 });
