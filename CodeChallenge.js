@@ -145,16 +145,16 @@ var customStyles = `
 }
 
 #CodeChallengeImage {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 10px;
 }
 
 .image-container-cc {
     display: flex;
-    height: 60%;
-    width: 50%;
-    margin: 10px 0px 10px 80px;
+    max-height: 180px;
+    max-width: 180px;
+    margin: auto;
 }
 
 /* Styles for screens larger than 561px */
@@ -176,10 +176,9 @@ var customStyles = `
     }
 
     .container-cc .box-cc .middle-cc p {
-    margin-top: 0.5em;
-    font-size: 1em;
-    font-family: 'Roboto', sans-serif;
-    margin-left: 4em;
+        margin-top: 0.5em;
+        font-size: 1em;
+        margin-left: 4em;
     }
     
     .button-container-cc {
@@ -196,7 +195,7 @@ var customStyles = `
     .container-cc .box-cc .left-cc button {
         font-size: .8em;
         padding: .5em 1.3em;
-        font-family: 'Roboto', sans-serif;
+        text-align: left;
     }
 }
 
@@ -274,9 +273,7 @@ var customStyles = `
     .container-cc .box-cc .left-cc button {
         font-size: 1em;
         padding: .6em 1.3em;
-        font-family: 'Roboto', sans-serif;
     }
-
 }
 `;
 
