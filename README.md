@@ -1,2 +1,2 @@
 # KaizenUXCodeChallenge
- Kaizen UX Code Challenge for Front-End Engineering Job
+ Kaizen UX Code Challenge for Scott Devoe
